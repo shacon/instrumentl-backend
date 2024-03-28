@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_03_26_004808) do
+ActiveRecord::Schema.define(version: 2024_03_28_195934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "inspection_violations", force: :cascade do |t|
-    t.string "type"
+    t.string "violation_type"
     t.datetime "date"
     t.text "description"
     t.bigint "inspection_id", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2024_03_26_004808) do
   create_table "inspections", force: :cascade do |t|
     t.integer "score"
     t.datetime "date"
-    t.string "type"
+    t.string "inspection_type"
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2024_03_26_004808) do
     t.string "zip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_owners_on_name"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 2024_03_26_004808) do
     t.bigint "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_restaurants_on_name"
     t.index ["owner_id"], name: "index_restaurants_on_owner_id"
   end
 
