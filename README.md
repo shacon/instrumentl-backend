@@ -1,5 +1,50 @@
+
+
 # README
 
+```mermaid
+erDiagram
+    OWNER ||--o{ RESTAURANT : "owns"
+    RESTAURANT ||--o{ INSPECTION : "has"
+    INSPECTION ||--o{ VIOLATION : "has"
+    VIOLATION }o--|| RISK_CATEGORY : "belongs to"
+
+    OWNER {
+        string name
+        string address
+        string city
+        string state
+        string zip
+    }
+
+    RESTAURANT {
+        string name
+        string address
+        string city
+        string zip
+        string phone_number
+        int owner_id
+    }
+
+    INSPECTION {
+        int score
+        datetime date
+        string type
+        int restaurant_id
+    }
+
+    VIOLATION {
+        string type
+        datetime date
+        text description
+        int inspection_id
+        int risk_category_id
+    }
+
+    RISK_CATEGORY {
+        string name
+    }
+```
 
 ### Assumptions
 
