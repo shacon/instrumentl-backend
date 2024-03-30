@@ -2,6 +2,8 @@
 
 # README
 
+Models Overview
+
 ```mermaid
 erDiagram
     OWNER ||--o{ RESTAURANT : "owns"
